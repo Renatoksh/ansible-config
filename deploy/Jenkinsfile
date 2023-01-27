@@ -1,8 +1,6 @@
 pipeline {
     agent any
-  
-  stages{
-  
+ 
   stages {
 
     stage("Initial cleanup") {
@@ -51,5 +49,4 @@ pipeline {
         }
       }
     }  
-  }
 }
