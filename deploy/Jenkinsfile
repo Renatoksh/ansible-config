@@ -20,7 +20,7 @@ pipeline{
 
     stage('Checkout SCM') {
       steps{
-          git branch: 'new_stages', url: 'https://github.com/Renatoksh/ansible-config'
+          git branch: 'main', url: 'https://github.com/Renatoksh/ansible-config'
         }
       }  
 
