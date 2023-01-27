@@ -77,15 +77,17 @@ Learn how to installk artifactory [here](https://jfrog.com/open-source/)
 ```
   pipeline {
     agent any
-
+ 
   stages {
+
     stage("Initial cleanup") {
-          steps {
-            dir("${WORKSPACE}") {
-              deleteDir()
-            }
-          }
+      steps {
+        dir("${WORKSPACE}") {
+          deleteDir()
         }
+      }
+    }
+
     stage('Build') {
       steps {
         script {
@@ -101,31 +103,29 @@ Learn how to installk artifactory [here](https://jfrog.com/open-source/)
         }
       }
     }
-
-    stage('Package'){
-      steps {
-        script {
-          sh 'echo "Packaging App" '
-        }
-      }
-    }
-
-    stage('Deploy'){
-      steps {
-        script {
-          sh 'echo "Deploying to Dev"'
-        }
-      }
-
-    }
     
-    stage("clean Up"){
-       steps {
-        cleanWs()
-     }
+    stage('Package') {
+      steps {
+        script {
+          sh 'echo "Package Stage"'
+        }
+      }
     }
-     
+
+    stage('Deploy') {
+      steps {
+        script {
+          sh 'echo "Deploy Stage"'
+        }
+      }
     }
+
+    stage('Clean Up') {
+      steps {
+          cleanWs()
+        }
+      }
+    }  
 }
 ```
 
@@ -252,3 +252,19 @@ stage('Plot Code Coverage Report') {
 
 }
 }
+
+
+#### Ansible.cfg
+=====================================
+[defaults]
+timeout = 160
+callback_whitelist = profile_tasks
+log_path=~/ansible.log
+host_key_checking = False
+gathering = smart
+ansible_python_interpreter=/usr/bin/python3
+allow_world_readable_tmpfiles=true
+
+
+[ssh_connection]
+ssh_args = -o ControlMaster=auto -o ControlPersist=30m -o ControlPath=/tmp/ansible-ssh-%h-%p-%r -o ServerAliveInterval=60 -o ServerAliveCountMax=60 -o ForwardAgent=yes
