@@ -26,7 +26,7 @@ pipeline{
           sh 'sed -i "3 a roles_path=${WORKSPACE}/roles" ${WORKSPACE}/deploy/ansible.cfg'  
         }
     }
-    
+
     stage('Run Ansible playbook') {
       steps {
         ansiblePlaybook become: true, colorized: true, credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'inventory/dev', playbook: 'playbooks/site.yml'
@@ -40,4 +40,3 @@ pipeline{
     }
     }
   }
-}
