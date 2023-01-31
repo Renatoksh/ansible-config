@@ -5,4 +5,5 @@
 [db]
 172.31.11.250 ansible_ssh_user='ubuntu'
 
-
+[artifactory]
+172.31.13.130 ansible_ssh_user='ec2-user'
