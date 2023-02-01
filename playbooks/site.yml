@@ -1,4 +1,8 @@
 ---
+- hosts: todo
+  -name: Deploy the todo application
+  ansible.builtin.import_playbook: ../static-assignments/deployment.yml
+
 #- hosts: db
 #- name: database assignment
 #  ansible.builtin.import_playbook: ../static-assignments/database.yml
@@ -14,7 +18,3 @@
 #- hosts: sonar
 #- name: sonar assignment
 #  ansible.builtin.import_playbook: ../static-assignments/sonar.yml
-
-- hosts: todo
- - name: Deploy the todo application
-   ansible.builtin.import_playbook: ../static-assignments/deployment.yml
