@@ -1,7 +1,7 @@
 #### Dependences to be installed
 ====================================
-- yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-- yum install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-8.rpm
+- yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+- yum install -y dnf-utils http://rpms.remirepo.net/enterprise/remi-release-9.rpm
 - yum install python3 python3-pip wget unzip git -y
 - python3 -m pip install --upgrade setuptools
 - python3 -m pip install --upgrade pip
@@ -257,6 +257,7 @@ stage('Plot Code Coverage Report') {
 #### Ansible.cfg
 =====================================
 [defaults]
+roles_path = /home/ec2-user/ansible-config/roles
 timeout = 160
 callback_whitelist = profile_tasks
 log_path=~/ansible.log
@@ -264,7 +265,7 @@ host_key_checking = False
 gathering = smart
 ansible_python_interpreter=/usr/bin/python3
 allow_world_readable_tmpfiles=true
-
+deprecation_warnings=False
 
 [ssh_connection]
 ssh_args = -o ControlMaster=auto -o ControlPersist=30m -o ControlPath=/tmp/ansible-ssh-%h-%p-%r -o ServerAliveInterval=60 -o ServerAliveCountMax=60 -o ForwardAgent=yes
