@@ -1,5 +1,5 @@
 ---
-- hosts: db
+- hosts: sonar
   become: true
   roles:
-  - mysql
+     - mysql
