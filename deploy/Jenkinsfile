@@ -11,50 +11,47 @@ pipeline {
       }
     }
   
-
-  stages {
     stage('Build') {
       steps {
         script {
-          sh 'echo "Building Stage"'
+          sh 'echo "Building App"'
         }
       }
     }
   }
 
-  stage('Test') {
+    stage('Test') {
       steps {
         script {
           sh 'echo "Testing App"'
         }
       }
-   }
+    }
   
   
-  stage('Package') {
+    stage('Package') {
       steps {
         script {
           sh 'echo "Packaging App"'
         }
       }
-   }
+    }
 
 
-  stage('Deploy') {
+    stage('Deploy') {
       steps {
         script {
           sh 'echo "Deploying to Dev"'
         }
       }
-   }
+    }
 
 
-  stage('Clean Up') {
+    stage('Clean Up') {
     steps {
       cleanWs()
+          }
     }
-   }
-
-  }
 }
+
 
