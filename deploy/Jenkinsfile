@@ -16,7 +16,7 @@ pipeline {
 
     stage('Checkou SCM'){
       steps{
-        git branch: 'main', url: 'https://github.com/Renatoksh/ansible-config.git'
+        git branch: 'ansible-dev', url: 'https://github.com/Renatoksh/ansible-config'
       }
      }
     
