@@ -75,58 +75,62 @@ Learn how to installk artifactory [here](https://jfrog.com/open-source/)
 ==================================
 
 ```
-  pipeline {
-    agent any
- 
-  stages {
+pipeline {
+  agent any
 
-    stage("Initial cleanup") {
-      steps {
-        dir("${WORKSPACE}") {
-          deleteDir()
-        }
+  stages{
+   stage("Initial Clean Up"){
+    steps {
+      dir ("${WORKSPACE}"){
+        deleteDir()
       }
-    }
-
-    stage('Build') {
+     }
+   }
+  
+    stage('Build'){
       steps {
         script {
-          sh 'echo "Building Stage"'
+          sh 'echo "Building App"'
+        }
+      }
+    }
+  
+
+    stage('Test'){
+      steps {
+        script {
+          sh 'echo "Testing App"'
+        }
+      }
+    }
+  
+  
+    stage('Package'){
+      steps {
+        script {
+          sh 'echo "Packaging App"'
         }
       }
     }
 
-    stage('Test') {
+
+    stage('Deploy'){
       steps {
         script {
-          sh 'echo "Testing Stage"'
-        }
-      }
-    }
-    
-    stage('Package') {
-      steps {
-        script {
-          sh 'echo "Package Stage"'
+          sh 'echo "Deploying to Dev"'
         }
       }
     }
 
-    stage('Deploy') {
-      steps {
-        script {
-          sh 'echo "Deploy Stage"'
-        }
-      }
-    }
 
     stage('Clean Up') {
-      steps {
-          cleanWs()
-        }
-      }
-    }  
+    steps {
+      cleanWs()
+          }
+    }
+  }
 }
+
 ```
 
 #### sonar properties
