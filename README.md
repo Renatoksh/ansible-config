@@ -70,6 +70,9 @@ Learn how to install Jenkins [here](https://www.jenkins.io/doc/book/installing/)
 
 Learn how to installk artifactory [here](https://jfrog.com/open-source/)
 
+### Install php-xdebug
+sudo yum install php-xdebug
+
 
 #### JEnkinsfile for Quick Task
 ==================================
